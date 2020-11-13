@@ -16,5 +16,41 @@ namespace TextEditor
         {
             InitializeComponent();
         }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Text Files (.txt)|*.txt";
+            ofd.Title = "Open a file...";
+            if (ofd.ShowDialog() == DialogResult.OK) 
+            {
+                System.IO.StreamReader sr = new System.IO.StreamReader(ofd.FileName);
+                richTextBox1.Text = sr.ReadToEnd();
+                sr.Close();
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Text Files (.txt)|*.txt";
+            sfd.Title = "Save file...";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(sfd.FileName);
+                sw.Write(richTextBox1);
+                sw.Close();
+            }
+        }
     }
 }
