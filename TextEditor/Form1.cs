@@ -72,5 +72,17 @@ namespace TextEditor
         {
             richTextBox1.Paste();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDialog1 = new FontDialog();
+            if (fontDialog1.ShowDialog() == DialogResult.OK & !String.IsNullOrEmpty(richTextBox1.Text))
+            {
+                richTextBox1.SelectionFont = fontDialog1.Font;
+            }
+            {
+
+            }
+        }
     }
 }
