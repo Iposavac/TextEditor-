@@ -15,7 +15,7 @@ namespace TextEditor
         public Form1()
         {
             InitializeComponent();
-            undoToolStripMenuItem.Enabled = richTextBox1.CanUndo;
+            
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,6 +83,16 @@ namespace TextEditor
             {
                 richTextBox1.SelectionFont = fontDialog1.Font;
             }
+        }
+
+        private void richTextBox1_SelectionChanged(object sender, EventArgs e)
+        {
+            cutToolStripMenuItem.Enabled = richTextBox1.SelectedText.Length != 0;
+        }
+        
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            undoToolStripMenuItem.Enabled = richTextBox1.CanUndo;
         }
     }
 }
