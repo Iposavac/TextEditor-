@@ -15,6 +15,7 @@ namespace TextEditor
         public Form1()
         {
             InitializeComponent();
+            undoToolStripMenuItem.Enabled = richTextBox1.CanUndo;
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,9 +35,7 @@ namespace TextEditor
             ofd.Title = "Open a file...";
             if (ofd.ShowDialog() == DialogResult.OK) 
             {
-                System.IO.StreamReader sr = new System.IO.StreamReader(ofd.FileName);
-                richTextBox1.Text = sr.ReadToEnd();
-                sr.Close();
+                richTextBox1.LoadFile(ofd.FileName);
             }
         }
 
@@ -47,9 +46,7 @@ namespace TextEditor
             sfd.Title = "Save file...";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(sfd.FileName);
-                sw.Write(richTextBox1);
-                sw.Close();
+                richTextBox1.SaveFile(sfd.FileName);
             }
         }
 
@@ -73,15 +70,18 @@ namespace TextEditor
             richTextBox1.Paste();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+        private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog fontDialog1 = new FontDialog();
-            if (fontDialog1.ShowDialog() == DialogResult.OK & !String.IsNullOrEmpty(richTextBox1.Text))
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
             {
                 richTextBox1.SelectionFont = fontDialog1.Font;
-            }
-            {
-
             }
         }
     }
