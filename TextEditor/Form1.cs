@@ -32,7 +32,7 @@ namespace TextEditor
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Text Files (.txt)|*.txt";
-            sfd.Filter = "Text Files (.rtf)|*.rtf";
+            ofd.Filter = "Text Files (.rtf)|*.rtf";
             ofd.Title = "Open a file...";
             if (ofd.ShowDialog() == DialogResult.OK) 
             {
@@ -55,6 +55,11 @@ namespace TextEditor
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             richTextBox1.Undo();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Redo();
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
