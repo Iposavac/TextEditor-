@@ -32,6 +32,7 @@ namespace TextEditor
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Text Files (.txt)|*.txt";
+            sfd.Filter = "Text Files (.rtf)|*.rtf";
             ofd.Title = "Open a file...";
             if (ofd.ShowDialog() == DialogResult.OK) 
             {
@@ -43,6 +44,7 @@ namespace TextEditor
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Text Files (.txt)|*.txt";
+            sfd.Filter = "Text Files (.rtf)|*.rtf";
             sfd.Title = "Save file...";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
