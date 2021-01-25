@@ -32,7 +32,6 @@ namespace TextEditor
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Text Files (.txt)|*.txt";
-            ofd.Filter = "Text Files (.rtf)|*.rtf";
             ofd.Title = "Open a file...";
             if (ofd.ShowDialog() == DialogResult.OK) 
             {
@@ -44,7 +43,6 @@ namespace TextEditor
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "Text Files (.txt)|*.txt";
-            sfd.Filter = "Text Files (.rtf)|*.rtf";
             sfd.Title = "Save file...";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -57,10 +55,6 @@ namespace TextEditor
             richTextBox1.Undo();
         }
 
-        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Redo();
-        }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -86,10 +80,12 @@ namespace TextEditor
         private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog fontDialog1 = new FontDialog();
+            fontDialog1.Font = richTextBox1.SelectionFont;
             if (fontDialog1.ShowDialog() == DialogResult.OK)
             {
                 richTextBox1.SelectionFont = fontDialog1.Font;
             }
+            
         }
 
         private void richTextBox1_SelectionChanged(object sender, EventArgs e)
