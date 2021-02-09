@@ -32,7 +32,7 @@ namespace TextEditor
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Text Files (.txt)|*.txt";
+            ofd.Filter = "RTF Files (.rtf)|*.rtf|Text Files (.txt)|*.txt|All Files|(*.*)";
             ofd.Title = "Open a file...";
             if (ofd.ShowDialog() == DialogResult.OK) 
             {
@@ -43,7 +43,7 @@ namespace TextEditor
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Text Files (.txt)|*.txt";
+            sfd.Filter = "RTF Files (.rtf)|*.rtf";
             sfd.Title = "Save file...";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
